@@ -78,13 +78,22 @@ Reasons:
 
 | Validation Check | Count |
 |------------------|--------|
-| Negative Values | 944 |
-| Zero Values | 6,110 |
+| -1 | 944 |
+| 24 | 1057 |
+| 25 | 999 |
+
+Expected Range:
+0-23
+
+Observed Range:
+-1 to 25
+  
+Total Invalid Records:
+3000 (2%)
 
 Assessment:
-
-- Negative values are invalid
-- Hour value `0` is valid and represents midnight (00:00)
+Column is largely valid.
+Invalid values appear to be boundary violations rather than random corruption.
 
 ---
 
