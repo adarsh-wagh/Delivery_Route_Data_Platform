@@ -197,21 +197,26 @@ Assessment:
 
 #### Coordinate Integrity Assessment
 
-Potential coordinate corruption detected.
+A geospatial validation was performed on the coordinate fields.
 
-Observations:
+Findings:
 
-- A subset of `start_lat` values fall outside the valid latitude range while remaining valid longitude values.
-- A subset of `start_lon` values fall outside the valid longitude range while remaining valid latitude values.
+- 17,012 records contain invalid start latitude values.
+- 12,376 records contain invalid start longitude values.
+- 4,086 records appear to contain swapped latitude and longitude values.
 
-Possible Cause:
+Assessment:
 
-- Latitude and longitude values may have been swapped during data generation or ingestion.
+A subset of records contain latitude values outside the valid range (-90° to +90°) while the corresponding longitude values fall within valid latitude ranges.
+
+This suggests latitude and longitude values may have been reversed during data generation or ingestion.
 
 Recommended Action:
 
-- Investigate coordinate pairs before applying remediation rules.
-
+- Investigate coordinate generation logic.
+- Correct confirmed latitude/longitude swaps in the Silver Layer.
+- Validate corrected coordinates before downstream use.
+  
 ---
 
 #### timestamp
